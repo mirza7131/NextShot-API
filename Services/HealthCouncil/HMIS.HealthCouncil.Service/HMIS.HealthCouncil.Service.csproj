@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\APIGateway\HMIS.Aggregator.API\HMIS.Aggregator.API.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\AppCommonMethods\AppCommonMethods.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\FileHandler\FileHandler.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\JWTAuthentication\JWTAuthentication.csproj" />
+    <ProjectReference Include="..\HMIS.HealthCouncil.Domain\HMIS.HealthCouncil.Domain\HMIS.HealthCouncil.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

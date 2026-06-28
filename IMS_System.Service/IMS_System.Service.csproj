@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationCore\Common\AppCommonMethods\AppCommonMethods.csproj" />
+    <ProjectReference Include="..\ApplicationCore\Common\JWTAuthentication\JWTAuthentication.csproj" />
+    <ProjectReference Include="..\IMSSystem.Domain\IMSSystem.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

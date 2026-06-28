@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a7d31fa3-51a4-4e70-8890-248d36d3c206</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\APIGateway\HMIS.Aggregator.API\HMIS.Aggregator.API.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\CommonExceptionHandler\CommonExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\CommonMessages\CommonMessages.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\DTOs\CommonDTOs.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\JWTAuthentication\JWTAuthentication.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\SMSSender\SMSSender.csproj" />
+    <ProjectReference Include="..\HMIS.Patient.Service\HMIS.Patient.Service.csproj" />
+  </ItemGroup>
+
+</Project>

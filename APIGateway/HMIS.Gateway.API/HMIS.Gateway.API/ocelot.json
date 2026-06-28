@@ -1,0 +1,23 @@
+{
+  "SwaggerEndPoints": [
+ {
+   "Key": "contacts",
+   "Config": [
+     {
+       "Name": "Auth API",
+       "Version": "v1",
+       "Url": "https://localhost:7082/swagger/v1/swagger.json"
+     }
+   ]
+ }
+],
+
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Type": "AppConfiguration",
+      "PollingIntervalSeconds": 1000
+    }
+  }
+}
+
+

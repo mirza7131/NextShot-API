@@ -1,0 +1,16 @@
+﻿ Steps to Perform  To Deploy Offline Utility
+
+1. CREATE Table [OfflineServerDataSyncLog]
+2. CREATE PROCEDURE [SPGetAllDataByTableNameByDateTime]
+3. Create Directory Structure C:\HMIS_SyncData\Upload\Pending,C:\HMIS_SyncData\Upload\Done
+4. Set URL In appsetting.json file to upload json files on live server MasterServerUrlForUploadFile": "https://cdn.pshealthpunjab.gov.pk/api/UploadFile/UploadFile",
+5. [UtitliyRunOnlineServer] in appsetting should be false
+6. HfId in Appsettings 
+7. Start Date From where data need to be sync
+
+ Steps to Perform  To Deploy Online/Master Utility
+
+1. CREATE Table [DataSyncPatientRecord]
+2. CREATE PROCEDURE of InsertOrUpdateData
+3. Create Directory Structure F:\\HMIS_Backend\\Services\\CDN\\HMIS.CDN.WebAPI\\wwwroot\\Data_Sync\\Pending,F:\\HMIS_Backend\\Services\\CDN\\HMIS.CDN.WebAPI\\wwwroot\\Data_Sync\\Done
+4. [UtitliyRunOnlineServer] in appsetting should be true

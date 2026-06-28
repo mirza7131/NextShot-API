@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace AuthDAL.Models.DbModelsReporting;
+
+public partial class ViewTodayPatientOpenVisitCountByDeptBySec
+{
+    public string? DepartmentName { get; set; }
+
+    public int DepartmentId { get; set; }
+
+    public string? SectionName { get; set; }
+
+    public int SectionId { get; set; }
+
+    public int? VisitCount { get; set; }
+
+    public int? PatientVisitRatio { get; set; }
+
+    public int? HealthFacilityId { get; set; }
+}

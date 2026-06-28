@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "HMIS.Data.SyncUtility": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

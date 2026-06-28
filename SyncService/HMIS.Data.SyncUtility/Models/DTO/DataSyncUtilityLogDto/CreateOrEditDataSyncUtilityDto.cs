@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HMIS.Data.SyncUtility.Models.DTO.DataSyncUtilityLogDto
+{
+    public class CreateOrEditDataSyncUtilityDto
+    {
+        public Guid? DataSyncUtilityLogId { get; set; }
+
+        public int HealthFacilityId { get; set; }
+
+        public string FileName { get; set; } = null!;
+
+        public int Status { get; set; }
+
+        public DateTime StatusUpdatedOn { get; set; }
+
+        public DateTime? UploadedOn { get; set; }
+
+        public DateTime? ProcessedOn { get; set; }
+
+        public DateTime? CompletedOn { get; set; }
+
+        public string? Message { get; set; }
+    }
+}

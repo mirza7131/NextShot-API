@@ -1,0 +1,44 @@
+﻿
+
+
+/****** Object:  Table [dbo].[OfflineServerDataSyncLog]    Script Date: 14-Sep-2023 10:28:21 am ******/
+
+CREATE TABLE [dbo].[OfflineServerDataSyncLog](
+	[OfflineServerDataSyncLogId] [uniqueidentifier] NOT NULL,
+	[LastSync] [datetime] NULL,
+	[HealthFacilityId] [int] NULL,
+ CONSTRAINT [PK_OfflineServerDataSyncLog] PRIMARY KEY CLUSTERED 
+(
+	[OfflineServerDataSyncLogId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+/****** Object:  StoredProcedure [dbo].[SPGetAllDataByTableNameByDateTime]    Script Date: 14-Sep-2023 10:30:54 am ******/
+
+CREATE  PROCEDURE [dbo].[SPGetAllDataByTableNameByDateTime]
+@TableName nvarchar(50) = NULL,
+@StartDateTime nvarchar(50) = NULL,
+@EndDateTime nvarchar(50) = NULL
+AS
+
+SET @StartDateTime = ISNULL(@StartDateTime, GETDATE())
+SET @EndDateTime = ISNULL(@EndDateTime, GETDATE())
+
+BEGIN
+
+DECLARE @strQry varchar(max) = '
+SELECT 
+(SELECT  * 
+FROM ' + @TableName + '
+WHERE CreatedOn > '''+ @StartDateTime + ''' AND CreatedOn <=''' + @EndDateTime + ''' 
+FOR JSON PATH,
+INCLUDE_NULL_VALUES) JsonData '
+
+
+--PRINT @strQry
+EXECUTE(@strQry)
+
+END
+

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3e7faec612b14e31922db829737ec709" Name="Diagram1">
+        <EntityTypeShape EntityType="CrystalReport.PatientCoMorbid" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDrugAddiction" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientNadraInfoResponse" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientNadraRequest" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientNadraResponse" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SocialWelfareAssignDoctor" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SocialWelfareForms" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Testsss" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.AuditLog" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.District" Width="1.5" PointX="1.5" PointY="58.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Division" Width="1.5" PointX="1.5" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ErrorLog" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HealthFacility" Width="1.5" PointX="0.75" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HealthFacilityCategory" Width="1.5" PointX="1.5" PointY="85.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HealthFacilityStation" Width="1.5" PointX="10.25" PointY="84.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HealthFacilityType" Width="1.5" PointX="1.5" PointY="72.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HfDepartments" Width="1.5" PointX="3" PointY="79.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.HfDepartmentSection" Width="1.5" PointX="8.25" PointY="89.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.MedicineLookup" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Menu" Width="1.5" PointX="8.25" PointY="101" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.OutSourceSystemLog" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientConfirmedDiseases" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Person" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Profile" Width="1.5" PointX="3" PointY="105.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ProfileType" Width="1.5" PointX="0.75" PointY="109" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Province" Width="1.5" PointX="1.5" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.RoleMenu" Width="1.5" PointX="10.5" PointY="95.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Roles" Width="1.5" PointX="8.25" PointY="95.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SourceSystem" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SyncDataLog" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.sysdiagrams" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Tehsil" Width="1.5" PointX="1.5" PointY="90.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UnionCouncil" Width="1.5" PointX="1.5" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UserAssignableRoles" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UserLog" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UserRoles" Width="1.5" PointX="10.5" PointY="89.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Users" Width="1.5" PointX="5.25" PointY="84.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.DentalSterilizationRecords" Width="1.5" PointX="7.5" PointY="84.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientAssessment" Width="1.5" PointX="30" PointY="83.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientScreening" Width="1.5" PointX="18.75" PointY="89" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientVaccination" Width="1.5" PointX="21.75" PointY="89" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.DepartmentLookup" Width="1.5" PointX="0.75" PointY="78.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SectionLookup" Width="1.5" PointX="3" PointY="98.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.LabTest" Width="1.5" PointX="33.75" PointY="73.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.LabTestDetail" Width="1.5" PointX="36" PointY="74.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ImageBaseSixtyFour" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.MedicineDispatch" Width="1.5" PointX="13.5" PointY="88.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.Patient" Width="1.5" PointX="16.5" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientAdmissionDetail" Width="1.5" PointX="24.75" PointY="88" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientAdmissionDetailLog" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientContactDetails" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDiagnose" Width="1.5" PointX="18.75" PointY="77.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDiagnoseDisease" Width="1.5" PointX="21" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDiagnoseProcedure" Width="1.5" PointX="24" PointY="81.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDiagnoseTemplate" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDiagnosisRecord" Width="1.5" PointX="33" PointY="87.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDischargeDetail" Width="1.5" PointX="18.75" PointY="95.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientImages" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientLabTest" Width="1.5" PointX="36" PointY="83" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientLabTestDetail" Width="1.5" PointX="38.25" PointY="86.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientLocationPrefix" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientOpenVisit" Width="1.5" PointX="27.75" PointY="82.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientPrescription" Width="1.5" PointX="33" PointY="92.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientSourceInfo" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientVisitFlow" Width="1.5" PointX="33" PointY="80.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientVitals" Width="1.5" PointX="30" PointY="95.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientWorkFlowLog" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PhysiotherapyForm" Width="1.5" PointX="21" PointY="75.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PhysiotherapyModalities" Width="1.5" PointX="23.25" PointY="75.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.SectionProcedure" Width="1.5" PointX="21.75" PointY="70.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.TbPatientDetails" Width="1.5" PointX="30" PointY="77.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UnknownPatient" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.tempBoth" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UserRegistrationLog" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientLog" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.PatientOpenVisitLog" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.RiderStatusLog" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewSocialWellfareDoctors" Width="1.5" PointX="10.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewSocialWellfarePatientDetail" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientDiagnoseDetail" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientLabTestDetail" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisitDetail" Width="1.5" PointX="20.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientPharmacyDetail" Width="1.5" PointX="20.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientRegistrationDetail" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientVisitFlow" Width="1.5" PointX="22.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientVitalDetail" Width="1.5" PointX="8.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.DeadBodiesListView" Width="1.5" PointX="22.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.GetALLMenuForSuperAdmin" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.NadraPatientImagesDetailView" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.UnknownPatientsListView" Width="1.5" PointX="22.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.V_HFDepartmentSection" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewAdviseLabTest" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewDrugAddictsPatientVisits" Width="1.5" PointX="24.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewGetAllRoleMenuAccess" Width="1.5" PointX="24.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewGetCreateRoleMenuAccess" Width="1.5" PointX="24.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewGetEditRoleMenuAccess" Width="1.5" PointX="16.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewGetPatientBaseSixtyFour" Width="1.5" PointX="22.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewHealthFacilityDepartmentList" Width="1.5" PointX="24.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewHfLocation" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewLabTestResults" Width="1.5" PointX="26.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewLocation" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewMedicineDispatchList" Width="1.5" PointX="26.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientLabTestList" Width="1.5" PointX="18.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisiDashbaordList" Width="1.5" PointX="26.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisit" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisitCountByDeptBySecByMonth" Width="1.5" PointX="28.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisitCountByGenderByMonth" Width="1.5" PointX="28.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientOpenVisitList" Width="1.5" PointX="10.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewPatientVitalList" Width="1.5" PointX="28.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewRiderLabTestList" Width="1.5" PointX="12.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewTBLabTest" Width="1.5" PointX="28.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewTbPatientCounts" Width="1.5" PointX="20.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewTbPatientsList" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewTbRegisteredPatient" Width="1.5" PointX="0.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrystalReport.ViewTodayPatientOpenVisitCountByDeptBySec" Width="1.5" PointX="2.75" PointY="29.75" IsExpanded="true" />
+        <AssociationConnector Association="CrystalReport.FK_District_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_District" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_District" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Tehsil_District" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_District" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Division_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_HealthFacilityType" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_Tehsil" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacility_UnionCouncil" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacilityStation_HealthFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HFDepartments_HealthFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_HealthFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_HealthFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_HealthFacility" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacilityType_HealthFacilityCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HealthFacilityStation_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HFDepartments_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HfDepartmentSection_HfDepartments" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_HfDepartmentSection_SectionLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_RoleMenu_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_DentalSterilizationRecords_EquipmentProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_LabTest_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_LabTest_Profile_LabTestType" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_LabTest_Profile1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_BloodGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_Caste" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_MaritialStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_MotherLand" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_Nationality" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_Relation" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Profile_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_PatientLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseDisease_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_EligibleReason" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Profile_VisitType" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_ReasonIfNoT" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescription_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescriptionDoseTime_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVaccination_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVaccination_Profile1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PhysiotherapyForm_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PhysiotherapyModalities_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Profile_ProfileType" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_RoleMenu_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_UserRoles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_TehsilId" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_UnionCouncil_Tehsil" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_Tehsil" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_UserRoles_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_DentalSterilizationRecords_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_MedicineDispatch_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Patient_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseProcedure_AssistedUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_Users_DeletedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_Users_UpdatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Users_SampleCollectedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users_IpdReferredBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users_OccupiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users_ReferredBy" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Users_PharmacyUser" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescription_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVitals_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVitals_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVitals_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_Users_SectionLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAssessment_PatientAssessment" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAssessment_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAssessment_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientScreening_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientScreening_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientScreening_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVaccination_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVaccination_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVaccination_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_DepartmentLookup_Referred" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_DepartmentLookup_IPD" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_DepartmentLookup_IpdReferredByDep" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_DepartmentLookup_Referred" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PhysiotherapyModalities_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_SectionLookup_DepartmentLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_SectionLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_SectionLookup_Referred" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_SectionLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_PatientOpenVisit_IpdReferredBySec" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_SectionLookup" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_SectionLookup_IPD" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_SectionLookup_Referred" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_LabTestDetail_LabTest" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_LabTest" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_MedicineDispatch_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_MedicineDispatch_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseDisease_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnosisRecord_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescription_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVitals_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_TbPatientDetails_TbPatientDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientAdmissionDetail_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnose_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseDisease_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseProcedure_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnosisRecord_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescription_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVisitFlow_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PhysiotherapyForm_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_TbPatientDetails_PatientDiagnose" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnoseProcedure_SectionProcedure" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDiagnosisRecord_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDischargeDetail_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_PatientLabTest" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTest_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientLabTestDetail_PatientLabTestDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientOpenVisit_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientPrescription_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVisitFlow_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PatientVitals_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_TbPatientDetails_PatientOpenVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="CrystalReport.FK_PhysiotherapyModalities_PhysiotherapyForm" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CrystalReport.PatientDocument" Width="1.5" PointX="30" PointY="102.875" />
+        <EntityTypeShape EntityType="CrystalReport.PatientStatusBySpeciality" Width="1.5" PointX="5.375" PointY="29.75" />
+        <EntityTypeShape EntityType="CrystalReport.RiskFactors" Width="1.5" PointX="29.375" PointY="29.75" />
+        <EntityTypeShape EntityType="CrystalReport.ViewDrugAddictPatientDiseases" Width="1.5" PointX="15.375" PointY="30.75" />
+        <EntityTypeShape EntityType="CrystalReport.ViewDrugAddictPatientDiseasesCommaSeparated" Width="1.5" PointX="23.375" PointY="30.75" />
+        <EntityTypeShape EntityType="CrystalReport.ViewSocialWellfareDeputyDirector" Width="1.5" PointX="31.375" PointY="0.75" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDocument_Profile" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDocument_Profile_Document" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDocument_Patient" />
+        <AssociationConnector Association="CrystalReport.FK_PatientDocument_PatientOpenVisit" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

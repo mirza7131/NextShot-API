@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AuthDAL.Models.Dto.UserDto
+{
+    public class UserDropdownDto
+    {
+        public Guid Id { get; set; }
+
+        public string Name { get; set; } = null!;
+
+    }
+}

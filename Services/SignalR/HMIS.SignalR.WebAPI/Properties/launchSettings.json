@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+<<<<<<<< HEAD:Services/MIMS/HMIS.MIMS.WebAPI/Properties/launchSettings.json
+      "applicationUrl": "http://localhost:13860",
+      "sslPort": 44355
+========
+      "applicationUrl": "http://localhost:13275",
+      "sslPort": 44353
+>>>>>>>> DEV:Services/SignalR/HMIS.SignalR.WebAPI/Properties/launchSettings.json
+    }
+  },
+  "profiles": {
+    "HMIS.SignalR.WebAPI": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+<<<<<<<< HEAD:Services/MIMS/HMIS.MIMS.WebAPI/Properties/launchSettings.json
+      "applicationUrl": "https://localhost:7172;http://localhost:5042",
+========
+      "applicationUrl": "https://localhost:7052;http://localhost:5234",
+>>>>>>>> DEV:Services/SignalR/HMIS.SignalR.WebAPI/Properties/launchSettings.json
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

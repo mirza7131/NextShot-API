@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace AuthDAL.Models.DbModelsReporting;
+
+public partial class ViewGetAllMedicineAdvisedRequisition
+{
+    public Guid MedicineAdvisedRequisitionId { get; set; }
+
+    public Guid PatientId { get; set; }
+
+    public Guid? PatientDiagnoseId { get; set; }
+
+    public Guid PatientVisitId { get; set; }
+
+    public string? RequsitionBy { get; set; }
+
+    public string? RequsitionFor { get; set; }
+
+    public DateTime? RequsitionOn { get; set; }
+
+    public Guid? CreatedBy { get; set; }
+
+    public string Status { get; set; } = null!;
+
+    public bool IsActive { get; set; }
+
+    public byte ActionTypeId { get; set; }
+}

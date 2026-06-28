@@ -1,0 +1,1368 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C1BDF54-F059-4CA6-8C08-9943C9A04614}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRReports</RootNamespace>
+    <AssemblyName>CRReports</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.5.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.Engine.13.0.4003\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.ClientDoc.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.CommLayer.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.CommonControls.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.Controllers.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.Prompting.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.ReportSource.13.0.4000\lib\net40\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CrystalReports.Shared.13.0.4003\lib\net40\CrystalDecisions.Shared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Cors.5.2.9\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Cors.5.2.9\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <!-- <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"> -->
+    <!-- <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath> -->
+    <!-- </Reference> -->
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Westwind.RazorHosting, Version=3.3.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Westwind.RazorHosting.3.3.9\lib\net45\Westwind.RazorHosting.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\CrystalReports.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CrystalReports.edmx</DependentUpon>
+      <LastGenOutput>CrystalReports.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\CrystalReports.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CrystalReports.edmx</DependentUpon>
+      <LastGenOutput>CrystalReports.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ReplicationHmisEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReplicationHmisEntities.edmx</DependentUpon>
+      <LastGenOutput>ReplicationHmisEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ReplicationHmisEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReplicationHmisEntities.edmx</DependentUpon>
+      <LastGenOutput>ReplicationHmisEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\AppCommonMethod.cs" />
+    <Compile Include="Common\CommonStringConstant.cs" />
+    <Compile Include="Common\Propertymapper2.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EmcController.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\AssociatedDisorder.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Attachments.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AuditLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BirthCertificate.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CallDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CrystalReports.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReports.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CrystalReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CrystalReports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReports.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataSyncPatientRecord.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataSyncToOffline.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataSyncUtilityLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DeadBodiesListView.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DeathCertificate.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DentalSterilizationRecords.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DepartmentLookup.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DevelopmentMilestones.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\District.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Division.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DoctorNotes.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EducationalHistory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Emc.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ErrorLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FamiliyHistory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Features.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FileUploadedToMasterServerLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessCBC.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessCertificate.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessGeneralParameter.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessSerology.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessStoolExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FitnessUrineCE.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAdditionalInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetALLMenuForSuperAdmin.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAllMlcQueData.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAllPatientThatAreNotCheckedYet.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HcpRecommendedTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HcpSilentMedicine.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HealthFacility.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HealthFacilityCategory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HealthFacilityStation.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HealthFacilityType.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HearingProblemHistory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HfDepartments.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\HfDepartmentSection.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IcvCertificate.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ImageBaseSixtyFour.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LabTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LabTestDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MedicineAdvised.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MedicineAdvisedRequisition.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MedicineDispatch.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MedicineLookup.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Menu.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MimsGetMedicineResponse.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MimsMedicineData.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MimsMedicineIndentDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MimsMedicineIndentLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLC.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCBodyIdentifierInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCPoliceInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCPostmortem.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVEvidenceCollected.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVInitialInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVLocalExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVPhysicalExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLCSVReport.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLEBasicInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLEExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MLEReport.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSreplication_objects.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSreplication_subscriptions.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSsavedforeignkeycolumns.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSsavedforeignkeyextendedproperties.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSsavedforeignkeys.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSsnapshotdeliveryprogress.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MSsubscription_agents.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NadraPatientImagesDetailView.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NutritionalAsessmentFindings.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OfflineServerDataSyncLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OfflineVersionLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OTPCode.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OutSourceSystemLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PastPsychiatricHistory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Patient.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientAdditionalInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientAdmissionDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientAdmissionDetailLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientAdmissionFlowLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientAssessment.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientBMI.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientCoMorbid.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientComorbidity.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientConfirmedDiseases.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientContactDetails.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDiagnose.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDiagnoseDisease.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDiagnoseProcedure.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDiagnoseTemplate.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDiagnosisRecord.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDietPlan.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDischargeDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDocument.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDocumentLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientDrugAddiction.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientEyeBlindness.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientImages.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientLabTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientLabTestDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientLocationPrefix.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientMalnutrition.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientNadraInfoResponse.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientNadraRequest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientNadraResponse.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientNutritionalRisk.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientOpenVisit.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientOpenVisitLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientPrescription.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientScreening.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientSourceInfo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientStatusBySpeciality.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientStatusBySpeciality1.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientVaccination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientVisitFlow.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientVisitToken.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientVitals.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientWorkFlowLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Person.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PhysiotherapyForm.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PhysiotherapyHomeExercisePlan.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PhysiotherapyModalities.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PostmortemExternalExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PostMortemInternalExamination.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PostmortemReport.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Profile.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProfileType.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Province.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PsychologicalAssessment.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PsychologicalTestApplied.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PsychologyAssociatedDisorder.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PsychologyDisorder.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PsychologyPatientModality.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ReplicationHmisEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReplicationHmisEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ReplicationHmisEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ReplicationHmisEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReplicationHmisEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RiderStatusLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RiskFactors.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RoleMenu.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Roles.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SampleConsignment.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SampleConsignmentDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SectionLookup.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SectionProcedure.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SocialWelfareAssignDoctor.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SocialWelfareForms.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SocialWelfareTaskPerformedByCD.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SourceSystem.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpeechAndLanguageHistory.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpeechDisorder.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpeechMilestone.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpeechModalities.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpeechTherapyPatientAssessment.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SPGetEditRoleMenuAccess_Result.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SPLabSampleCollected_Result.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SPPatientinternalExternalLabTest_Result.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SscVisitStatusLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SyncDataLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SyncToOfflineErrorLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TbPatientDetails.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Tehsil.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tempBoth.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TempMIMSMedicineListPrice.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Testsss.cs">
+      <DependentUpon>CrystalReports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UDFGetCountsByHFIDAndDate_Result.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UnionCouncil.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UnknownPatient.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UnknownPatientsListView.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserAssignableRoles.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserRegistrationLog.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserRoles.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Users.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewAdviseLabTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewAnmonalList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewAnmonalTestDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDivisionWiseDiseaseCount.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDrugAddictCommunityDevelopment.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDrugAddictFieldOfficer.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDrugAddictPatientDiseases.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDrugAddictPatientDiseasesCommaSeparated.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewDrugAddictsPatientVisits.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAccumulateMedicineDispatch.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllIpdQueue.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllMedicineAdvisedRequisition.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllPatientForMlcs.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllPatientsCountByPtStatusCD.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllPatientsCountCD.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllPatientsCountSW.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllPatientThatAreNotCheckedYet.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetAllRoleMenuAccess.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetCreateRoleMenuAccess.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetEditRoleMenuAccess.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetPatientBaseSixtyFour.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewGetPatientLabTestList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewHealthFacilityDepartmentList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewHfLocation.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewIPDPatientVisit.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewLabTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewLabTestResults.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewLocation.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewMedicineDispatchList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewMLCDoctorList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientDiagnoseDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientLabTestDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientLabTestList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisiDashbaordList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisit.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisitCountByDeptBySecByMonth.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisitCountByGenderByMonth.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisitDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientOpenVisitList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientPharmacyDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientRegistrationDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientVisitFlow.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientVitalDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewPatientVitalList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewRiderLabTestList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSampleCollectedConsignmentList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSampleConsignmentList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSampleConsignmentWithDetailList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSocialWellfareDeputyDirector.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSocialWellfareDoctors.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSocialWellfarePatientDetail.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSpecialityRoomNo.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewSwDashboardCount.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\viewTBIssuedMedicine.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewTBLabTest.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewTbPatientCounts.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewTbPatientsList.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewTbRegisteredPatient.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ViewTodayPatientOpenVisitCountByDeptBySec.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\V_HFDepartmentSection.cs">
+      <DependentUpon>ReplicationHmisEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dto\BirthCertificateDto.cs" />
+    <Compile Include="Models\Dto\DeathCertificateDto.cs" />
+    <Compile Include="Models\Dto\FilterDto.cs" />
+    <Compile Include="Models\Dto\FitnessCertificateDto.cs" />
+    <Compile Include="Models\Dto\IcvCertificateDto.cs" />
+    <Compile Include="Models\Dto\MlePatientDto.cs" />
+    <Compile Include="Models\Dto\MlePatientDtoCopy.cs" />
+    <Compile Include="Models\Dto\MleReportDto.cs" />
+    <Compile Include="Models\Dto\DashboardFilter.cs" />
+    <Compile Include="Models\Dto\OpdStockDto.cs" />
+    <Compile Include="Models\Dto\PatientDto.cs" />
+    <Compile Include="Models\Dto\ResponseDTO.cs" />
+    <Compile Include="Models\Dto\UploadDocumentDto.cs" />
+    <Compile Include="Models\PharmacyInternalExternalAccumulateQuantityDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BirthCertificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BirthCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DeathCertificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeathCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DrugAddcictDashboardDieases.cs">
+      <DependentUpon>DrugAddcictDashboardDieases.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\DrugAddcictSocialWelfare.cs">
+      <DependentUpon>DrugAddcictSocialWelfare.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\DrugAddictDashboardReport.cs">
+      <DependentUpon>DrugAddictDashboardReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\EyeBlindessReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EyeBlindessReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FitnessCertificate.cs">
+      <DependentUpon>FitnessCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\FitnessCertificateAslah.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FitnessCertificateAslah.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IcvCertificateReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IcvCertificateReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MedicineDispenseReport.cs">
+      <DependentUpon>MedicineDispenseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\MedicineStockReport.cs">
+      <DependentUpon>MedicineStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\MedicineWiseReport.cs">
+      <DependentUpon>MedicineWiseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\MLCReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MLCReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\MLEReport.cs">
+      <DependentUpon>MLEReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\MleSvReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MleSvReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PathologyReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PathologyReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DoctorWisePatientReport.cs">
+      <DependentUpon>DoctorWisePatientReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\PatientReport.cs">
+      <DependentUpon>PatientReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\PostMortemReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostMortemReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PostMortemReportOne.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostMortemReportOne.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TbDashboardMedicine.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TbDashboardMedicine.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TBDashboardReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TbDashboardReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\tests.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tests.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\UHIClaimsDetail - Copy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UHIClaimsDetail - Copy.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\DashboardTransService.cs" />
+    <Compile Include="Services\EmcService.cs" />
+    <Compile Include="Services\DashboardService.cs" />
+    <!--<Compile Include="Reports\TbDashboardMedicine.cs">
+			<DependentUpon>TbDashboardMedicine.rpt</DependentUpon>
+			<Compile Include="Reports\EyeBlindessReport.cs">
+				<DependentUpon>EyeBlindessReport.rpt</DependentUpon>
+				<AutoGen>True</AutoGen>
+				<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+				<DesignTime>True</DesignTime>
+				<SubType>Component</SubType>
+			</Compile>
+			<Compile Include="Reports\TbDashboardReport.cs">
+				<AutoGen>True</AutoGen>
+				<DesignTime>True</DesignTime>
+				<DependentUpon>TbDashboardReport.rpt</DependentUpon>
+				<SubType>Component</SubType>
+			</Compile>
+			<Compile Include="Reports\tests.cs">
+				<AutoGen>True</AutoGen>
+				<DesignTime>True</DesignTime>
+				<DependentUpon>tests.rpt</DependentUpon>
+				<SubType>Component</SubType>
+			</Compile>
+			<Compile Include="Reports\PathologyReports.cs">
+				<DependentUpon>PathologyReports.rpt</DependentUpon>
+				<AutoGen>True</AutoGen>
+				<SubType>Component</SubType>
+				<DesignTime>True</DesignTime>
+				<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			</Compile>
+			<Compile Include="Reports\PatientReport.cs">
+				<AutoGen>True</AutoGen>
+				<DesignTime>True</DesignTime>
+				<DependentUpon>PatientReport.rpt</DependentUpon>
+				<SubType>Component</SubType>
+				<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			</Compile>
+			<Compile Include="Services\DashboardService.cs" />
+			<Compile Include="Utilities\CrystalReport.cs" />
+		</Compile>-->
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\CrystalReports.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CrystalReports.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\CrystalReports.edmx.diagram">
+      <DependentUpon>CrystalReports.edmx</DependentUpon>
+    </Content>
+    <Content Include="..\..\..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
+    <EntityDeploy Include="Data\ReplicationHmisEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ReplicationHmisEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\ReplicationHmisEntities.edmx.diagram">
+      <DependentUpon>ReplicationHmisEntities.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BirthCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BirthCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DeathCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DeathCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DrugAddcictDashboardDieases.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DrugAddcictDashboardDieases.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DrugAddcictSocialWelfare.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DrugAddcictSocialWelfare.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DrugAddictDashboardReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DrugAddictDashboardReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EyeBlindessReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EyeBlindessReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FitnessCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FitnessCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FitnessCertificateAslah.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FitnessCertificateAslah.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IcvCertificateReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IcvCertificateReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MedicineDispenseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MedicineDispenseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MedicineStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MedicineStockReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MedicineWiseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MedicineWiseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MLCReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MLCReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MLEReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MLEReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MleSvReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MleSvReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\NaqshaEMazrobiDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PathologyReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PathologyReports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DoctorWisePatientReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoctorWisePatientReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PatientReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PostMortemReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PostMortemReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PostMortemReportOne.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PostMortemReportOne.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TbDashboardMedicine.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TbDashboardMedicine.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TbDashboardReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TbDashboardReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\tests.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>tests.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\UHIClaimsDetail - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UHIClaimsDetail - Copy.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56079</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44369/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

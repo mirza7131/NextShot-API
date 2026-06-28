@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace HMIS.HCP.Domain.Models.DbModels;
+
+public partial class PatientVisitFlow
+{
+    public Guid PatientVisitFlowId { get; set; }
+
+    public int? PreviousDepartmentId { get; set; }
+
+    public int? PreviousSectionId { get; set; }
+
+    public int? CurrentDepartmentId { get; set; }
+
+    public int? CurrentSectionId { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public Guid? CreatedBy { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public Guid? UpdatedBy { get; set; }
+
+    public DateTime? UpdatedOn { get; set; }
+
+    public Guid? DeletedBy { get; set; }
+
+    public DateTime? DeletedOn { get; set; }
+
+    public byte ActionTypeId { get; set; }
+
+    public Guid? PatientVisitId { get; set; }
+
+    public int? HealthFacilityId { get; set; }
+
+    public Guid? PatientDiagnoseId { get; set; }
+
+    public Guid? ReferedBy { get; set; }
+
+    public bool? IsVisitClose { get; set; }
+
+    public bool? IsFilterClinic { get; set; }
+
+    public bool? IsConsultant { get; set; }
+
+    public bool? IsFollowUp { get; set; }
+
+    public int? FollowUpNo { get; set; }
+
+    public Guid? LastVisitId { get; set; }
+
+    public string? Remarks { get; set; }
+
+    public virtual PatientDiagnose? PatientDiagnose { get; set; }
+
+    public virtual PatientOpenVisit? PatientVisit { get; set; }
+}

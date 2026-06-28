@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace HMIS.Patient.Domain.Models.DbModels_TB;
+
+public partial class PatientsListDatum
+{
+    public int Id { get; set; }
+
+    public double? SrNo { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Cnic { get; set; }
+
+    public string? Gender { get; set; }
+
+    public string? PatientType { get; set; }
+
+    public string? Address { get; set; }
+
+    public string? HealthFacilityDivision { get; set; }
+
+    public string? HealthFacilityDistrict { get; set; }
+
+    public string? HealthFacilityTehsil { get; set; }
+
+    public string? HealthFacilityName { get; set; }
+
+    public DateTime? PatientReportingDate { get; set; }
+
+    public string? PhoneNumber { get; set; }
+
+    public string? EmrRegistrationNo { get; set; }
+
+    public string? DepartmentRegistrationNo { get; set; }
+
+    public string? CnicType { get; set; }
+
+    public string? CnicGuardianRelation { get; set; }
+
+    public DateTime? DateOfBirth { get; set; }
+
+    public string? City { get; set; }
+
+    public string? Town { get; set; }
+
+    public string? Street { get; set; }
+
+    public string? HouseNo { get; set; }
+
+    public string? DistrictCode { get; set; }
+
+    public string? DivisionCode { get; set; }
+
+    public string? TehsilCode { get; set; }
+
+    public string? FatherName { get; set; }
+
+    public string? Occupation { get; set; }
+
+    public string? MaritalStatus { get; set; }
+
+    public int? NoOfChildren { get; set; }
+
+    public Guid? CreatedBy { get; set; }
+
+    public DateTime? CreationDate { get; set; }
+
+    public Guid? UpdatedBy { get; set; }
+
+    public DateTime? UpdatedDate { get; set; }
+
+    public Guid? DeletedBy { get; set; }
+
+    public DateTime? DeletedDate { get; set; }
+
+    public bool? RecordStatus { get; set; }
+
+    public int? ProgramId { get; set; }
+
+    public Guid? Guid { get; set; }
+
+    public string? HealthFacilityCode { get; set; }
+
+    public string? PatientSource { get; set; }
+
+    public bool? IsHealthCardIssued { get; set; }
+
+    public string? GuardianName { get; set; }
+
+    public string? GuardianPhoneNumber { get; set; }
+
+    public string? Status { get; set; }
+
+    public int? UnionCouncilId { get; set; }
+
+    public bool? IsBarcodeGenerated { get; set; }
+
+    public DateTime? DataAddedOn { get; set; }
+
+    public byte? Age { get; set; }
+
+    public string? Latitude { get; set; }
+
+    public string? Longitude { get; set; }
+
+    public bool? IsHusband { get; set; }
+
+    public string? DivisionName { get; set; }
+
+    public string? DistrictName { get; set; }
+
+    public string? TehsilName { get; set; }
+
+    public string? FullName { get; set; }
+}

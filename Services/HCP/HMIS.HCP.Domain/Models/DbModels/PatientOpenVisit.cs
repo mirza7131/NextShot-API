@@ -1,0 +1,185 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace HMIS.HCP.Domain.Models.DbModels;
+
+public partial class PatientOpenVisit
+{
+    public Guid PatientOpenVisitId { get; set; }
+
+    public Guid? ParentPatientOpenVisitId { get; set; }
+
+    public string? SlipNo { get; set; }
+
+    public string? TokenNo { get; set; }
+
+    public int? VisitNo { get; set; }
+
+    public Guid? VisitTypeProfileId { get; set; }
+
+    public bool? IsReferred { get; set; }
+
+    public int? ReferredHealthFacilityId { get; set; }
+
+    public int? ReferredDepartmentLookupId { get; set; }
+
+    public int? ReferredSectionLookupId { get; set; }
+
+    public Guid? ReferredBy { get; set; }
+
+    public Guid? PatientId { get; set; }
+
+    public int? HealthFacilityId { get; set; }
+
+    public int? DepartementLookupId { get; set; }
+
+    public int? SectionLookupId { get; set; }
+
+    public Guid? CurrentStationProfileId { get; set; }
+
+    public Guid? CurrentStationUserId { get; set; }
+
+    public DateTime? VisitDate { get; set; }
+
+    public bool IsFromPmis { get; set; }
+
+    public Guid? VitalCollectedBy { get; set; }
+
+    public Guid? AttendedBy { get; set; }
+
+    public Guid? PharmacyAttendedBy { get; set; }
+
+    public bool IsWillingToBuyMedPrivately { get; set; }
+
+    public bool? IsDischarge { get; set; }
+
+    public bool? IsVisitExternally { get; set; }
+
+    public string? SourceVisitId { get; set; }
+
+    public Guid? SourceSystemId { get; set; }
+
+    public string? SourceHealthFacilityId { get; set; }
+
+    public string? SourceReferredHealthFacilityId { get; set; }
+
+    public bool? IsVitalSkip { get; set; }
+
+    public bool? IsOccupied { get; set; }
+
+    public Guid? OccupiedBy { get; set; }
+
+    public bool? IsAdmittedInIpd { get; set; }
+
+    public bool? IsReferredIpd { get; set; }
+
+    public int? IpdDepartmentLookupId { get; set; }
+
+    public int? IpdSectionLookupId { get; set; }
+
+    public Guid? IpdReferredBy { get; set; }
+
+    public int? IpdReferredByDepartmentLookupId { get; set; }
+
+    public int? IpdReferredBySectionLookupId { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public Guid? CreatedBy { get; set; }
+
+    public DateTime? UpdatedOn { get; set; }
+
+    public Guid? UpdatedBy { get; set; }
+
+    public DateTime? DeletedOn { get; set; }
+
+    public Guid? DeletedBy { get; set; }
+
+    public long? UserLogId { get; set; }
+
+    public byte ActionTypeId { get; set; }
+
+    public string? Remarks { get; set; }
+
+    public bool? IsEligibleForSsc { get; set; }
+
+    public string? SscNumber { get; set; }
+
+    public bool? IsSscClaimed { get; set; }
+
+    public Guid? ReasonIfSscNotClaimed { get; set; }
+
+    public DateTime? SscClaimedDate { get; set; }
+
+    public Guid? ReasonIfNotEligibleForSsc { get; set; }
+
+    public virtual User? CreatedByNavigation { get; set; }
+
+    public virtual Profile? CurrentStationProfile { get; set; }
+
+    public virtual DepartmentLookup? DepartementLookup { get; set; }
+
+    public virtual HealthFacility? HealthFacility { get; set; }
+
+    public virtual DepartmentLookup? IpdDepartmentLookup { get; set; }
+
+    public virtual DepartmentLookup? IpdReferredByDepartmentLookup { get; set; }
+
+    public virtual User? IpdReferredByNavigation { get; set; }
+
+    public virtual SectionLookup? IpdReferredBySectionLookup { get; set; }
+
+    public virtual SectionLookup? IpdSectionLookup { get; set; }
+
+    public virtual ICollection<MedicineDispatch> MedicineDispatches { get; } = new List<MedicineDispatch>();
+
+    public virtual User? OccupiedByNavigation { get; set; }
+
+    public virtual Patient? Patient { get; set; }
+
+    public virtual ICollection<PatientAdmissionDetail> PatientAdmissionDetails { get; } = new List<PatientAdmissionDetail>();
+
+    public virtual ICollection<PatientAssessment> PatientAssessments { get; } = new List<PatientAssessment>();
+
+    public virtual ICollection<PatientDiagnose> PatientDiagnoses { get; } = new List<PatientDiagnose>();
+
+    public virtual ICollection<PatientDiagnosisRecord> PatientDiagnosisRecords { get; } = new List<PatientDiagnosisRecord>();
+
+    public virtual ICollection<PatientDischargeDetail> PatientDischargeDetails { get; } = new List<PatientDischargeDetail>();
+
+    public virtual ICollection<PatientLabTest> PatientLabTests { get; } = new List<PatientLabTest>();
+
+    public virtual ICollection<PatientPrescription> PatientPrescriptions { get; } = new List<PatientPrescription>();
+
+    public virtual ICollection<PatientScreening> PatientScreenings { get; } = new List<PatientScreening>();
+
+    public virtual ICollection<PatientVaccination> PatientVaccinations { get; } = new List<PatientVaccination>();
+
+    public virtual ICollection<PatientVisitFlow> PatientVisitFlows { get; } = new List<PatientVisitFlow>();
+
+    public virtual ICollection<PatientVital> PatientVitals { get; } = new List<PatientVital>();
+
+    public virtual User? PharmacyAttendedByNavigation { get; set; }
+
+    public virtual Profile? ReasonIfNotEligibleForSscNavigation { get; set; }
+
+    public virtual User? ReferredByNavigation { get; set; }
+
+    public virtual DepartmentLookup? ReferredDepartmentLookup { get; set; }
+
+    public virtual SectionLookup? ReferredSectionLookup { get; set; }
+
+    public virtual SectionLookup? SectionLookup { get; set; }
+
+    public virtual SourceSystem? SourceSystem { get; set; }
+
+    public virtual ICollection<TbPatientDetail> TbPatientDetails { get; } = new List<TbPatientDetail>();
+
+    public virtual User? UpdatedByNavigation { get; set; }
+
+    public virtual Profile? VisitTypeProfile { get; set; }
+
+    public virtual User? VitalCollectedByNavigation { get; set; }
+}

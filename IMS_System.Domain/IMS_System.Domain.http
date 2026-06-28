@@ -1,0 +1,6 @@
+@IMS_System.Domain_HostAddress = http://localhost:5248
+
+GET {{IMS_System.Domain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

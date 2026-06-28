@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace HMIS.EMC.Domain.Models.DbModels;
+
+public partial class ViewDrugAddictPatientDiseasesCommaSeparated
+{
+    public Guid PatientId { get; set; }
+
+    public Guid PatientOpenVisitId { get; set; }
+
+    public string? FullName { get; set; }
+
+    public string Cnic { get; set; } = null!;
+
+    public string? MobileNo { get; set; }
+
+    public string? Mrno { get; set; }
+
+    public int? HrId { get; set; }
+
+    public string? HealthFacilityTypeCode { get; set; }
+
+    public string? HealthFacilityCode { get; set; }
+
+    public string? DivisionCode { get; set; }
+
+    public string? DistrictCode { get; set; }
+
+    public string? TehsilCode { get; set; }
+
+    public Guid? CreatedById { get; set; }
+
+    public string? Name { get; set; }
+
+    public int HealthFacilityId { get; set; }
+
+    public int? HealthFacilityTypeId { get; set; }
+
+    public int? ProvinceId { get; set; }
+
+    public int? TehsilId { get; set; }
+
+    public int? DistrictId { get; set; }
+
+    public int? DivisionId { get; set; }
+
+    public int? DepartementLookupId { get; set; }
+
+    public int? SectionLookupId { get; set; }
+
+    public string? CreatedBy { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public int? DiseaseCount { get; set; }
+
+    public string? Diseases { get; set; }
+}

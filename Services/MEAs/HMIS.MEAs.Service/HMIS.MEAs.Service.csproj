@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\AppCommonMethods\AppCommonMethods.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationCore\Common\JWTAuthentication\JWTAuthentication.csproj" />
+    <ProjectReference Include="..\..\Patient\HMIS.Patient.Service\HMIS.Patient.Service.csproj" />
+    <ProjectReference Include="..\HMIS.MEAs.Domain\HMIS.MEAs.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

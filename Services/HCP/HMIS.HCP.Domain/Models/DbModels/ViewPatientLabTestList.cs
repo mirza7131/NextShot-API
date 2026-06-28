@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace HMIS.HCP.Domain.Models.DbModels;
+
+public partial class ViewPatientLabTestList
+{
+    public Guid PatientLabTestId { get; set; }
+
+    public Guid? PatientId { get; set; }
+
+    public Guid? PatientVisitId { get; set; }
+
+    public string? BarcodeNo { get; set; }
+
+    public int? LabTestId { get; set; }
+
+    public Guid? LabDepartmentProfileId { get; set; }
+
+    public string? LabDepartmentShortName { get; set; }
+
+    public string LabDepartmentName { get; set; } = null!;
+
+    public string Cnic { get; set; } = null!;
+
+    public string? MrNo { get; set; }
+
+    public string? PatientName { get; set; }
+
+    public string? LabTestName { get; set; }
+
+    public string? AdvisedBy { get; set; }
+
+    public DateTime? AdvisedOn { get; set; }
+
+    public string? PatientMobileNo { get; set; }
+
+    public decimal TestPrice { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public bool? IsSampleCollected { get; set; }
+
+    public string? SampleCollectedBy { get; set; }
+
+    public Guid? SampleCollectedById { get; set; }
+
+    public DateTime? SampleCollectedOn { get; set; }
+
+    public bool? IsReportGenerated { get; set; }
+
+    public string? ReportGeneratedBy { get; set; }
+
+    public Guid? ReportGeneratedById { get; set; }
+
+    public DateTime? ReportGeneratedOn { get; set; }
+
+    public bool? IsSampleRejected { get; set; }
+
+    public string? SampleRejectedBy { get; set; }
+
+    public DateTime? SampleRejectedOn { get; set; }
+
+    public string? SampleRejectedReason { get; set; }
+
+    public bool? IsArchived { get; set; }
+
+    public Guid? ArchivedBy { get; set; }
+
+    public DateTime? ArchivedOn { get; set; }
+
+    public bool? IsAdvisedExternally { get; set; }
+
+    public string? SourceDoctorName { get; set; }
+
+    public string? SampleType { get; set; }
+
+    public int ProvinceId { get; set; }
+
+    public int DivisionId { get; set; }
+
+    public int DistrictId { get; set; }
+
+    public int TehsilId { get; set; }
+
+    public int HealthFacilityId { get; set; }
+}
