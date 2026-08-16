@@ -12,7 +12,7 @@ namespace AuthDAL.Repositories
     {
         #region Class Fields & Propertities
 
-        private readonly GamaContext _dbContext;
+        private readonly NextShotContext _dbContext;
         private readonly UnitOfWork<Menu> _uowMenu;
 
 
@@ -20,7 +20,7 @@ namespace AuthDAL.Repositories
 
         #region Constructor
 
-        public MenuRepository(GamaContext dbContext, UnitOfWork<Menu> uowMenu)
+        public MenuRepository(NextShotContext dbContext, UnitOfWork<Menu> uowMenu)
         {
             _dbContext = dbContext;
             _uowMenu = uowMenu;

@@ -181,7 +181,7 @@ namespace AuthBAL
 
         private async Task<List<ViewGetEditRoleMenuAccess>> GetRoleMenuAccess(Guid? RoleId)
         {
-            using (var db = new GamaContext())
+            using (var db = new NextShotContext())
             {
                 var conn = _uowRoleMenu.GetDbContext().Database.GetDbConnection();
                 try

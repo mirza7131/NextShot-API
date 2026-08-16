@@ -46,7 +46,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
         .AddJsonFile($"appsettings.{builder.Environment}.json", optional: true)
         .AddEnvironmentVariables();
 
-builder.Services.AddDbContext<GamaContext>(options =>
+builder.Services.AddDbContext<NextShotContext>(options =>
 options.UseSqlServer(
           builder.Configuration.GetConnectionString("DefaultConnection")
          ));

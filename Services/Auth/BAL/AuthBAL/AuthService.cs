@@ -493,7 +493,7 @@ namespace AuthBAL
         {
             //var _uowEventUser = new UnitOfWork<EventUser>(_uowUser.GetDbContext());
             var res = new ResponseEventExistDto();
-            using (var db = new GamaContext())
+            using (var db = new NextShotContext())
             {
                 var conn = _uowUser.GetDbContext().Database.GetDbConnection();
                 try

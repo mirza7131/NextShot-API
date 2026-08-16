@@ -12,14 +12,14 @@ namespace AuthDAL.Repositories
     {
         #region Class Fields & Propertities
 
-        private readonly GamaContext _dbContext;
+        private readonly NextShotContext _dbContext;
 
 
         #endregion
 
         #region Constructor
 
-        public UserRoleRepository(GamaContext dbContext)
+        public UserRoleRepository(NextShotContext dbContext)
         {
             _dbContext = dbContext;
         }

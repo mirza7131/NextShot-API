@@ -10,14 +10,14 @@ namespace AuthDAL.Repositories.UOW
 {
     public class UnitOfWork<T> : IDisposable where T : class
     {
-        private GamaContext _context;
+        private NextShotContext _context;
 
         public UnitOfWork()
         {
-            _context = new GamaContext();
+            _context = new NextShotContext();
         }
 
-        public UnitOfWork(GamaContext context)
+        public UnitOfWork(NextShotContext context)
         {
             _context = context;
         }
@@ -46,7 +46,7 @@ namespace AuthDAL.Repositories.UOW
             await _context.SaveChangesAsync();
         }
 
-        public GamaContext GetDbContext()
+        public NextShotContext GetDbContext()
         {
             return  _context;
         }
