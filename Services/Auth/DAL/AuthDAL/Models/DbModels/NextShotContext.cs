@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthDAL.Models.DbModels;
 
-public partial class GamaContext : DbContext
+public partial class NextShotContext : DbContext
 {
-    public GamaContext()
+    public NextShotContext()
     {
     }
 
-    public GamaContext(DbContextOptions<GamaContext> options)
+    public NextShotContext(DbContextOptions<NextShotContext> options)
         : base(options)
     {
     }
@@ -520,24 +520,298 @@ public partial class GamaContext : DbContext
 
 
 
+    public virtual DbSet<InventoryItem> InventoryItems { get; set; }
+
+    public virtual DbSet<TableSession> TableSessions { get; set; }
 
 
+    public virtual DbSet<ClubCustomer> ClubCustomers { get; set; }
+    public virtual DbSet<TableSessionPlayer> TableSessionPlayers { get; set; }
+    public virtual DbSet<TableSessionInventoryItem> TableSessionInventoryItems { get; set; }
+    public virtual DbSet<TableSessionGame> TableSessionGames { get; set; }
+    public virtual DbSet<CustomerPayment> CustomerPayments { get; set; }
+    public virtual DbSet<ClubTable> ClubTables { get; set; }
 
 
+    public virtual DbSet<ClubCustomerPayment> ClubCustomerPayments { get; set; }
 
+    public virtual DbSet<InventorySale> InventorySales { get; set; }
 
-
-
+    public virtual DbSet<InventorySaleItem> InventorySaleItems { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-      //  => optionsBuilder.UseSqlServer("Server=MIRZA;Database=Gama;Persist Security Info=False;User Id=invoice;Password=abc@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
-      => optionsBuilder.UseSqlServer("Server=tcp:gamatyping.database.windows.net,1433;Database=Gama;Persist Security Info=False;User Id=gama;Password=abcd@1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
+        //  => optionsBuilder.UseSqlServer("Server=MIRZA;Database=Gama;Persist Security Info=False;User Id=invoice;Password=abc@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
+        // => optionsBuilder.UseSqlServer("Server=tcp:gamatyping.database.windows.net,1433;Database=Gama;Persist Security Info=False;User Id=gama;Password=abcd@1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
+        //  => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=NextShot;Persist Security Info=False;User Id=nextshot;Password=123456;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
+        => optionsBuilder.UseSqlServer("Server=db61668.public.databaseasp.net;Database=db61668;Persist Security Info=False;User Id=db61668;Password=NextShot1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=400;");
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+
+
+        modelBuilder.Entity<ClubCustomer>(entity =>
+        {
+            entity.ToTable("ClubCustomers", "dbo");
+
+            entity.HasKey(e => e.ClubCustomerId);
+
+            entity.Property(e => e.ClubCustomerId)
+                .HasColumnName("ClubCustomerId");
+
+            entity.Property(e => e.CustomerName)
+                .HasMaxLength(100);
+
+            entity.Property(e => e.PhoneNo)
+                .HasMaxLength(50);
+
+
+            entity.Property(e => e.BalanceAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+        });
+
+
+        modelBuilder.Entity<ClubTable>(entity =>
+        {
+            entity.HasKey(e => e.ClubTableId);
+
+            entity.Property(e => e.TableName).HasMaxLength(100);
+            entity.Property(e => e.TableType).HasMaxLength(50);
+
+            entity.Property(e => e.HourlyRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.GameRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DoubleHourlyRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DoubleGameRate).HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<TableSession>(entity =>
+        {
+            entity.HasKey(e => e.TableSessionId);
+
+            entity.Property(e => e.TableName).HasMaxLength(100);
+            entity.Property(e => e.TableType).HasMaxLength(50);
+            entity.Property(e => e.CustomerName).HasMaxLength(100);
+            entity.Property(e => e.CustomerPhone).HasMaxLength(30);
+            entity.Property(e => e.PlayerOneName).HasMaxLength(100);
+            entity.Property(e => e.PlayerTwoName).HasMaxLength(100);
+            entity.Property(e => e.SessionMode).HasMaxLength(50);
+
+            entity.Property(e => e.HourlyRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.GameRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.MinuteRate).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.TableAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.InventoryAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.GameAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.GrossAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NetAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.TotalAmount)
+                .HasComputedColumnSql("[TableAmount] + [InventoryAmount] - [DiscountAmount]", stored: false);
+            entity.Property(e => e.PaidAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DueAmount).HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.StartTime).HasColumnType("datetime");
+            entity.Property(e => e.EndTime).HasColumnType("datetime");
+
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValue("Running");
+
+            entity.Property(e => e.PaymentStatus)
+                .HasMaxLength(50)
+                .HasDefaultValue("Unpaid");
+
+            entity.Property(e => e.ReceiptNo).HasMaxLength(50);
+
+            entity.Property(e => e.PlayerCount).HasDefaultValue(1);
+            entity.Property(e => e.GameCount).HasDefaultValue(0);
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TableSessionPlayer>(entity =>
+        {
+            entity.HasKey(e => e.TableSessionPlayerId);
+
+            entity.Property(e => e.PlayerName).HasMaxLength(100);
+            entity.Property(e => e.PhoneNo).HasMaxLength(30);
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.TableSession)
+                .WithMany(p => p.TableSessionPlayers)
+                .HasForeignKey(d => d.TableSessionId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.ClubCustomer)
+                .WithMany(p => p.TableSessionPlayers)
+                .HasForeignKey(d => d.ClubCustomerId);
+        });
+
+        modelBuilder.Entity<TableSessionInventoryItem>(entity =>
+        {
+            entity.HasKey(e => e.TableSessionInventoryItemId);
+
+            entity.Property(e => e.ItemName).HasMaxLength(100);
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.BuyerName).HasMaxLength(100);
+            entity.Property(e => e.TotalAmount)
+    .HasComputedColumnSql("[Price] * [Quantity]", stored: false);
+
+            entity.HasOne(d => d.InventoryItem)
+                .WithMany(p => p.TableSessionInventoryItems)
+                .HasForeignKey(d => d.InventoryItemId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.TableSession)
+                .WithMany(p => p.TableSessionInventoryItems)
+                .HasForeignKey(d => d.TableSessionId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<TableSessionGame>(entity =>
+        {
+            entity.HasKey(e => e.TableSessionGameId);
+
+            entity.Property(e => e.Amount)
+                .HasDefaultValue(15)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.TableSession)
+                .WithMany(p => p.TableSessionGames)
+                .HasForeignKey(d => d.TableSessionId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<CustomerPayment>(entity =>
+        {
+            entity.HasKey(e => e.CustomerPaymentId);
+
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.PaymentType).HasMaxLength(50);
+            entity.Property(e => e.Notes).HasMaxLength(300);
+
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.ClubCustomer)
+                .WithMany(p => p.CustomerPayments)
+                .HasForeignKey(d => d.ClubCustomerId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.TableSession)
+                .WithMany(p => p.CustomerPayments)
+                .HasForeignKey(d => d.TableSessionId);
+        });
+
+
+
+
+
+
+    modelBuilder.Entity<ClubCustomerPayment>(entity =>
+{
+    entity.HasKey(e => e.ClubCustomerPaymentId);
+
+    entity.Property(e => e.PlayerName).HasMaxLength(100);
+    entity.Property(e => e.TotalAmount).HasColumnType("decimal(18, 2)");
+    entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 2)");
+    entity.Property(e => e.PaidAmount).HasColumnType("decimal(18, 2)");
+    entity.Property(e => e.DueAmount).HasColumnType("decimal(18, 2)");
+    entity.Property(e => e.PaymentType).HasMaxLength(50);
+    entity.Property(e => e.PaymentStatus).HasMaxLength(50);
+});
+
+
+
+        modelBuilder.Entity<InventorySale>(entity =>
+        {
+            entity.HasKey(e => e.InventorySaleId);
+
+            entity.Property(e => e.ReceiptNo).HasMaxLength(50);
+            entity.Property(e => e.CustomerName).HasMaxLength(150);
+            entity.Property(e => e.PhoneNo).HasMaxLength(50);
+            entity.Property(e => e.ItemName).HasMaxLength(150);
+
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.TotalAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NetAmount)
+                .HasComputedColumnSql("([TotalAmount]-[DiscountAmount])", false)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.CashAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.CardAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.PaidAmount)
+                .HasComputedColumnSql("([CashAmount]+[CardAmount])", false)
+                .HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DueAmount)
+                .HasComputedColumnSql("(([TotalAmount]-[DiscountAmount])-([CashAmount]+[CardAmount]))", false)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.PaymentStatus).HasMaxLength(50);
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DeletedOn).HasColumnType("datetime");
+        });
+
+
+
+
+        modelBuilder.Entity<InventorySaleItem>(entity =>
+        {
+            entity.HasKey(e => e.InventorySaleItemId);
+
+            entity.Property(e => e.ItemName).HasMaxLength(150);
+
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.TotalAmount)
+                .HasComputedColumnSql("([Price]*[Quantity])", false)
+                .HasColumnType("decimal(29, 2)");
+
+            entity.Property(e => e.CreatedOn)
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("(getdate())");
+
+            entity.HasOne(d => d.InventorySale)
+                .WithMany(p => p.InventorySaleItems)
+                .HasForeignKey(d => d.InventorySaleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_InventorySaleItems_InventorySales");
+        });
+
+
+
+
         modelBuilder.Entity<AssessmentOption>(entity =>
         {
             entity.ToTable("AssessmentOption");
@@ -1468,6 +1742,46 @@ public partial class GamaContext : DbContext
                 .HasForeignKey(d => d.HealthFacilityCategoryId)
                 .HasConstraintName("FK_HealthFacilityType_HealthFacilityCategory");
         });
+
+
+
+
+
+
+
+
+        modelBuilder.Entity<InventoryItem>(entity =>
+        {
+            entity.HasKey(e => e.InventoryItemId);
+
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Category).HasMaxLength(50);
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.StockQty).HasDefaultValue(0);
+
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedOn).HasColumnType("datetime");
+        });
+
+
+
+
+
+
+
+
+
 
         modelBuilder.Entity<HearingProblemHistory>(entity =>
         {

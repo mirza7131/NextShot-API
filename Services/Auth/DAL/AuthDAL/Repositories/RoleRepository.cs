@@ -12,7 +12,7 @@ namespace AuthDAL.Repositories
     {
         #region Class Fields & Propertities
 
-        private readonly GamaContext _dbContext;
+        private readonly NextShotContext _dbContext;
         private readonly UnitOfWork<Role> _uowRole;
 
 
@@ -20,7 +20,7 @@ namespace AuthDAL.Repositories
 
         #region Constructor
 
-        public RoleRepository(GamaContext dbContext , UnitOfWork<Role> uowRole)
+        public RoleRepository(NextShotContext dbContext , UnitOfWork<Role> uowRole)
         {
             _dbContext = dbContext;
             _uowRole = uowRole;

@@ -15,7 +15,7 @@ namespace AuthDAL.Repositories
     {
         #region Class Fields & Propertities
 
-        private readonly GamaContext _dbContext;
+        private readonly NextShotContext _dbContext;
         private UnitOfWork<RoleMenu> _uowRoleMenu;
 
 
@@ -23,7 +23,7 @@ namespace AuthDAL.Repositories
 
         #region Constructor
 
-        public RoleMenuRepository(GamaContext dbContext, UnitOfWork<RoleMenu> uowRoleMenu)
+        public RoleMenuRepository(NextShotContext dbContext, UnitOfWork<RoleMenu> uowRoleMenu)
         {
             _dbContext = dbContext;
             _uowRoleMenu = uowRoleMenu;
@@ -77,7 +77,7 @@ namespace AuthDAL.Repositories
         {
 
 
-            using (var db = new GamaContext())
+            using (var db = new NextShotContext())
             {
                 var conn = _uowRoleMenu.GetDbContext().Database.GetDbConnection();
                 try

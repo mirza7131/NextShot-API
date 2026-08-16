@@ -483,7 +483,7 @@ namespace AuthBAL
 
         public async Task<List<GetBedsSectionWiseDto>> GetBedsBySectionId(int? HealthFacilityId, int? DepartmentLookupId, int? SectionLookupId)
         {
-            using (var db = new GamaContext())
+            using (var db = new NextShotContext())
             {
                 var conn = _uowHfDepartmentSection.GetDbContext().Database.GetDbConnection();
                 try
