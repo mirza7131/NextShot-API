@@ -946,24 +946,12 @@ namespace AuthBAL
 
             session.GrossAmount = session.TableAmount + session.InventoryAmount + session.GameAmount;
 
-            session.DiscountAmount = input.DiscountAmount;
-            session.NetAmount = session.GrossAmount - input.DiscountAmount;
-            session.PaidAmount = input.PaidAmount;
-            session.DueAmount = session.NetAmount - input.PaidAmount;
-
-            if (session.DueAmount <= 0)
-                session.PaymentStatus = "Paid";
-            else if (session.PaidAmount > 0)
-                session.PaymentStatus = "Partial";
-            else
-                session.PaymentStatus = "Unpaid";
-
-            session.Status = "Completed";
-            session.ReceiptNo = "NS-" + DateTime.Now.ToString("yyyyMMddHHmmss");
-            session.UpdatedOn = DateTime.Now;
-
             if (input.PlayerPayments != null && input.PlayerPayments.Any())
             {
+                decimal totalDiscount = 0;
+                decimal totalPaid = 0;
+                decimal totalDue = 0;
+
                 foreach (var player in input.PlayerPayments)
                 {
                     if (player.ClubCustomerId == null || player.ClubCustomerId <= 0)
@@ -976,10 +964,15 @@ namespace AuthBAL
                     if (!customerExists)
                         continue;
 
-                    var netAmount = Math.Max(0, player.Amount - player.DiscountAmount);
-                    var dueAmount = Math.Max(0, netAmount - player.PaidAmount);
+                    var amount = Math.Max(0, player.Amount);
+                    var discountAmount = Math.Max(0, player.DiscountAmount);
+                    var netAmount = Math.Max(0, amount - discountAmount);
+                    var cashAmount = Math.Max(0, player.CashAmount);
+                    var cardAmount = Math.Max(0, player.CardAmount);
+                    var paidAmount = cashAmount + cardAmount;
+                    var dueAmount = Math.Max(0, netAmount - paidAmount);
 
-                    if (dueAmount <= 0)
+                    if (netAmount <= 0 && paidAmount <= 0)
                         continue;
 
                     var payment = new CustomerPayment
@@ -987,12 +980,12 @@ namespace AuthBAL
                         ClubCustomerId = player.ClubCustomerId.Value,
                         TableSessionId = session.TableSessionId,
                         TotalAmount = netAmount,
-                        CashAmount = player.CashAmount,
-                        CardAmount = player.CardAmount,
-                        PaidAmount = player.CashAmount + player.CardAmount,
-                        DiscountAmount = player.DiscountAmount,
+                        CashAmount = cashAmount,
+                        CardAmount = cardAmount,
+                        PaidAmount = paidAmount,
+                        DiscountAmount = discountAmount,
                         DueAmount = dueAmount,
-                        PaymentStatus = player.PaidAmount > 0 ? "Partial" : "Unpaid",
+                        PaymentStatus = dueAmount <= 0 ? "Paid" : paidAmount > 0 ? "Partial" : "Unpaid",
                         PaymentType = "Session",
                         IsActive = true,
                         IsDeleted = false,
@@ -1000,41 +993,75 @@ namespace AuthBAL
                     };
 
                     _uowPayment.Repository.Insert(payment);
+
+                    totalDiscount += discountAmount;
+                    totalPaid += paidAmount;
+                    totalDue += dueAmount;
                 }
+
+                session.DiscountAmount = totalDiscount;
+                session.NetAmount = Math.Max(0, session.GrossAmount - totalDiscount);
+                session.PaidAmount = totalPaid;
+                session.DueAmount = totalDue;
             }
-            else if (session.ClubCustomerId != null && session.ClubCustomerId.Value > 0 && session.DueAmount > 0)
+            else
             {
-                var customerExists = await _uowCustomer.Repository.GetALL(x =>
-                        x.ClubCustomerId == session.ClubCustomerId.Value)
-                    .AnyAsync();
+                var discountAmount = Math.Max(0, input.DiscountAmount);
+                var cashAmount = Math.Max(0, input.CashAmount);
+                var cardAmount = Math.Max(0, input.CardAmount);
+                var paidAmount = cashAmount + cardAmount;
 
-                if (customerExists)
+                session.DiscountAmount = discountAmount;
+                session.NetAmount = Math.Max(0, session.GrossAmount - discountAmount);
+                session.PaidAmount = paidAmount;
+                session.DueAmount = Math.Max(0, session.NetAmount - paidAmount);
+
+                if (session.ClubCustomerId != null && session.ClubCustomerId.Value > 0)
                 {
-                    var payment = new CustomerPayment
-                    {
-                        ClubCustomerId = session.ClubCustomerId.Value,
-                        TableSessionId = session.TableSessionId,
-                        TotalAmount = session.NetAmount,
-                        PaidAmount = session.PaidAmount,
-                        DiscountAmount = session.DiscountAmount,
-                        DueAmount = session.DueAmount,
-                        PaymentStatus = session.PaymentStatus,
-                        PaymentType = "Session",
-                        IsActive = true,
-                        IsDeleted = false,
-                        CreatedOn = DateTime.Now
-                    };
+                    var customerExists = await _uowCustomer.Repository.GetALL(x =>
+                            x.ClubCustomerId == session.ClubCustomerId.Value)
+                        .AnyAsync();
 
-                    _uowPayment.Repository.Insert(payment);
+                    if (customerExists && (session.NetAmount > 0 || session.PaidAmount > 0))
+                    {
+                        var payment = new CustomerPayment
+                        {
+                            ClubCustomerId = session.ClubCustomerId.Value,
+                            TableSessionId = session.TableSessionId,
+                            TotalAmount = session.NetAmount,
+                            CashAmount = cashAmount,
+                            CardAmount = cardAmount,
+                            PaidAmount = paidAmount,
+                            DiscountAmount = session.DiscountAmount,
+                            DueAmount = session.DueAmount,
+                            PaymentStatus = session.DueAmount <= 0 ? "Paid" : paidAmount > 0 ? "Partial" : "Unpaid",
+                            PaymentType = "Session",
+                            IsActive = true,
+                            IsDeleted = false,
+                            CreatedOn = DateTime.Now
+                        };
+
+                        _uowPayment.Repository.Insert(payment);
+                    }
                 }
             }
+
+            if (session.DueAmount <= 0)
+                session.PaymentStatus = "Paid";
+            else if (session.PaidAmount > 0)
+                session.PaymentStatus = "Partial";
+            else
+                session.PaymentStatus = "Unpaid";
+
+            session.Status = "Completed";
+            session.ReceiptNo = "NS-" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            session.UpdatedOn = DateTime.Now;
 
             await _uowPayment.Save();
             await _uowSession.Save();
 
             return session;
         }
-
         public async Task<List<TableSession>> GetRunningTableSessions()
         {
             var _context = new UnitOfWork<TableSession>(_uowInvoiceMaster.GetDbContext());
@@ -1080,27 +1107,48 @@ namespace AuthBAL
                 .Include(x => x.TableSessionPlayers)
                 .Include(x => x.TableSessionInventoryItems)
                 .Include(x => x.TableSessionGames)
-                .OrderByDescending(x => x.EndTime)
+                .ToListAsync();
+
+            var sessionIds = sessions.Select(x => x.TableSessionId).ToList();
+
+            var payments = await context.Set<CustomerPayment>()
+                .Where(x =>
+                    x.TableSessionId != null &&
+                    sessionIds.Contains(x.TableSessionId.Value) &&
+                    x.IsActive == true &&
+                    x.IsDeleted == false)
                 .ToListAsync();
 
             var sales = await saleQuery
                 .Include(x => x.InventorySaleItems)
-                .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
 
             var result = new List<object>();
 
             foreach (var session in sessions)
             {
-                var payments = await context.Set<CustomerPayment>()
-                    .Where(x =>
-                        x.TableSessionId == session.TableSessionId &&
-                        x.IsActive == true &&
-                        x.IsDeleted == false)
-                    .ToListAsync();
+                var sessionPayments = payments
+                    .Where(x => x.TableSessionId == session.TableSessionId)
+                    .ToList();
+
+                var cashAmount = sessionPayments.Sum(x => x.CashAmount);
+                var cardAmount = sessionPayments.Sum(x => x.CardAmount);
+                var splitPaidAmount = cashAmount + cardAmount;
+
+                var paidAmount = splitPaidAmount > 0
+                    ? splitPaidAmount
+                    : sessionPayments.Any()
+                        ? sessionPayments.Sum(x => x.PaidAmount)
+                        : session.PaidAmount;
+
+                var dueAmount = sessionPayments.Any()
+                    ? sessionPayments.Sum(x => x.DueAmount)
+                    : session.DueAmount;
 
                 result.Add(new
                 {
+                    SortDate = session.EndTime ?? session.CreatedOn,
+
                     TableSessionId = session.TableSessionId,
                     InventorySaleId = (int?)null,
                     PaymentType = "Session",
@@ -1120,10 +1168,10 @@ namespace AuthBAL
                     session.DiscountAmount,
                     session.NetAmount,
 
-                    CashAmount = payments.Sum(x => x.CashAmount),
-                    CardAmount = payments.Sum(x => x.CardAmount),
-                    PaidAmount = payments.Any() ? payments.Sum(x => x.PaidAmount) : session.PaidAmount,
-                    DueAmount = payments.Any() ? payments.Sum(x => x.DueAmount) : session.DueAmount,
+                    CashAmount = cashAmount,
+                    CardAmount = cardAmount,
+                    PaidAmount = paidAmount,
+                    DueAmount = dueAmount,
 
                     session.Status,
                     session.CreatedOn,
@@ -1149,6 +1197,8 @@ namespace AuthBAL
             {
                 result.Add(new
                 {
+                    SortDate = sale.CreatedOn,
+
                     TableSessionId = (int?)null,
                     InventorySaleId = (int?)sale.InventorySaleId,
                     PaymentType = "InventorySale",
@@ -1167,9 +1217,10 @@ namespace AuthBAL
                     InventoryAmount = sale.TotalAmount,
                     sale.DiscountAmount,
                     sale.NetAmount,
+
                     sale.CashAmount,
                     sale.CardAmount,
-                    sale.PaidAmount,
+                    PaidAmount = sale.CashAmount + sale.CardAmount,
                     sale.DueAmount,
 
                     Status = sale.PaymentStatus,
@@ -1188,7 +1239,7 @@ namespace AuthBAL
             }
 
             return result
-                .OrderByDescending(x => ((dynamic)x).CreatedOn)
+                .OrderByDescending(x => ((dynamic)x).SortDate)
                 .ToList();
         }
 
@@ -1478,7 +1529,6 @@ public async Task<List<object>> GetCustomerPendingPayments()
         }
 
 
-
         public async Task<InventorySale> CreateInventorySale(CreateInventorySaleDto input)
         {
             var uowSale = new UnitOfWork<InventorySale>(_uowInvoiceMaster.GetDbContext());
@@ -1498,10 +1548,20 @@ public async Task<List<object>> GetCustomerPendingPayments()
             }
                 };
 
-            var inventoryIds = items.Select(x => x.InventoryItemId).ToList();
+            items = items
+                .Where(x => x.InventoryItemId > 0 && x.Quantity > 0)
+                .ToList();
+
+            if (!items.Any())
+                throw new Exception("Please add inventory item.");
+
+            var inventoryIds = items.Select(x => x.InventoryItemId).Distinct().ToList();
 
             var inventoryItems = await uowInventory.Repository
-                .GetALL(x => inventoryIds.Contains(x.InventoryItemId))
+                .GetALL(x =>
+                    inventoryIds.Contains(x.InventoryItemId) &&
+                    x.IsActive == true &&
+                    x.IsDeleted == false)
                 .ToListAsync();
 
             foreach (var saleItem in items)
@@ -1513,8 +1573,6 @@ public async Task<List<object>> GetCustomerPendingPayments()
 
                 if (inventory.StockQty < saleItem.Quantity)
                     throw new Exception($"{inventory.Name} stock is not enough.");
-
-                inventory.StockQty -= saleItem.Quantity;
             }
 
             var totalAmount = items.Sum(x =>
@@ -1524,12 +1582,13 @@ public async Task<List<object>> GetCustomerPendingPayments()
             });
 
             var discountAmount = Math.Min(Math.Max(0, input.DiscountAmount), totalAmount);
+            var netAmount = totalAmount - discountAmount;
             var cashAmount = Math.Max(0, input.CashAmount);
             var cardAmount = Math.Max(0, input.CardAmount);
             var paidAmount = cashAmount + cardAmount;
-            var dueAmount = (totalAmount - discountAmount) - paidAmount;
+            var dueAmount = Math.Max(0, netAmount - paidAmount);
 
-            if (paidAmount > totalAmount - discountAmount)
+            if (paidAmount > netAmount)
                 throw new Exception("Paid amount cannot be greater than net amount.");
 
             var first = items.First();
@@ -1539,7 +1598,9 @@ public async Task<List<object>> GetCustomerPendingPayments()
             {
                 ReceiptNo = "CS-" + DateTime.Now.ToString("yyyyMMddHHmmss"),
                 ClubCustomerId = input.ClubCustomerId,
-                CustomerName = input.CustomerName,
+                CustomerName = string.IsNullOrWhiteSpace(input.CustomerName)
+                    ? "Walk-in Customer"
+                    : input.CustomerName.Trim(),
                 PhoneNo = input.PhoneNo,
 
                 InventoryItemId = first.InventoryItemId,
@@ -1551,6 +1612,7 @@ public async Task<List<object>> GetCustomerPendingPayments()
                 DiscountAmount = discountAmount,
                 CashAmount = cashAmount,
                 CardAmount = cardAmount,
+
                 PaymentStatus = dueAmount <= 0 ? "Paid" : paidAmount > 0 ? "Partial" : "Unpaid",
                 IsActive = true,
                 IsDeleted = false,
@@ -1564,7 +1626,9 @@ public async Task<List<object>> GetCustomerPendingPayments()
             {
                 var inventory = inventoryItems.First(x => x.InventoryItemId == saleItem.InventoryItemId);
 
-                uowSaleItem.Repository.Insert(new InventorySaleItem
+                inventory.StockQty -= saleItem.Quantity;
+
+                var dbSaleItem = new InventorySaleItem
                 {
                     InventorySaleId = sale.InventorySaleId,
                     InventoryItemId = inventory.InventoryItemId,
@@ -1572,34 +1636,107 @@ public async Task<List<object>> GetCustomerPendingPayments()
                     Price = inventory.Price,
                     Quantity = saleItem.Quantity,
                     CreatedOn = DateTime.Now
-                });
+                };
+
+                // Do NOT set InventorySaleItem.TotalAmount.
+                // It is computed in database: Price * Quantity.
+
+                uowSaleItem.Repository.Insert(dbSaleItem);
             }
 
-            if (dueAmount > 0 && input.ClubCustomerId.HasValue)
+            await uowSaleItem.Save();
+            await uowInventory.Save();
+
+            if (input.ClubCustomerId.HasValue && input.ClubCustomerId.Value > 0)
             {
-                uowPayment.Repository.Insert(new CustomerPayment
+                var payment = new CustomerPayment
                 {
                     ClubCustomerId = input.ClubCustomerId.Value,
                     InventorySaleId = sale.InventorySaleId,
                     ReceiptNo = sale.ReceiptNo,
-                    TotalAmount = totalAmount - discountAmount,
+                    TotalAmount = netAmount,
                     PaidAmount = paidAmount,
                     DiscountAmount = discountAmount,
                     DueAmount = dueAmount,
                     CashAmount = cashAmount,
                     CardAmount = cardAmount,
-                    PaymentStatus = sale.PaymentStatus,
+                    PaymentStatus = dueAmount <= 0 ? "Paid" : paidAmount > 0 ? "Partial" : "Unpaid",
                     PaymentType = "InventorySale",
                     IsActive = true,
                     IsDeleted = false,
                     CreatedOn = DateTime.Now
-                });
-            }
+                };
 
-            await uowSaleItem.Save();
+                uowPayment.Repository.Insert(payment);
+                await uowPayment.Save();
+            }
 
             return sale;
         }
+        public async Task<bool> DeleteInventorySale(int inventorySaleId)
+        {
+            var context = _uowInvoiceMaster.GetDbContext();
+
+            var _uowSale = new UnitOfWork<InventorySale>(context);
+            var _uowSaleItem = new UnitOfWork<InventorySaleItem>(context);
+            var _uowInventory = new UnitOfWork<InventoryItem>(context);
+            var _uowPayment = new UnitOfWork<CustomerPayment>(context);
+
+            var sale = await _uowSale.Repository.GetALL(x =>
+                    x.InventorySaleId == inventorySaleId &&
+                    x.IsDeleted == false)
+                .FirstOrDefaultAsync();
+
+            if (sale == null)
+                throw new Exception("Inventory sale not found.");
+
+            var saleItems = await _uowSaleItem.Repository.GetALL(x =>
+                    x.InventorySaleId == inventorySaleId &&
+                    x.IsDeleted == false)
+                .ToListAsync();
+
+            foreach (var saleItem in saleItems)
+            {
+                saleItem.IsActive = false;
+                saleItem.IsDeleted = true;
+                saleItem.DeletedOn = DateTime.Now;
+
+                var inventory = await _uowInventory.Repository.GetALL(x =>
+                        x.InventoryItemId == saleItem.InventoryItemId)
+                    .FirstOrDefaultAsync();
+
+                if (inventory != null)
+                {
+                    inventory.StockQty += saleItem.Quantity;
+                    inventory.UpdatedOn = DateTime.Now;
+                }
+            }
+
+            sale.IsActive = false;
+            sale.IsDeleted = true;
+            sale.DeletedOn = DateTime.Now;
+
+            var payments = await _uowPayment.Repository.GetALL(x =>
+                    x.InventorySaleId == inventorySaleId &&
+                    x.IsDeleted == false)
+                .ToListAsync();
+
+            foreach (var payment in payments)
+            {
+                payment.IsActive = false;
+                payment.IsDeleted = true;
+                payment.DeletedOn = DateTime.Now;
+            }
+
+            await _uowSale.Save();
+
+            return true;
+        }
+
+
+
+
+
 
 
 

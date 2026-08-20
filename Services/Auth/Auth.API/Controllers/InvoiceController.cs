@@ -377,6 +377,22 @@ namespace Auth.API.Controllers
             return Ok(new ResponseSuccess { data = response });
         }
 
+
+        [HttpPost]
+        [Route("DeleteInventorySale")]
+        public async Task<IActionResult> DeleteInventorySale([FromQuery] int? inventorySaleId, [FromQuery] int? id)
+        {
+            var saleId = inventorySaleId ?? id ?? 0;
+
+            if (saleId <= 0)
+                throw new Exception("Invalid inventory sale id.");
+
+            var response = await _InvoiceService.DeleteInventorySale(saleId);
+            return Ok(new ResponseSuccess { data = response });
+        }
+
+
+
         //[HttpGet]
         //[Route("GetById")]
         //public async Task<IActionResult> GetById(int Id)

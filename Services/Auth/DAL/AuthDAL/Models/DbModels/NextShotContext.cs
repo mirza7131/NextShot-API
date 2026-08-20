@@ -730,6 +730,12 @@ public partial class NextShotContext : DbContext
             entity.HasOne(d => d.TableSession)
                 .WithMany(p => p.CustomerPayments)
                 .HasForeignKey(d => d.TableSessionId);
+            entity.Property(e => e.CreatedOn)
+    .HasDefaultValueSql("(getdate())")
+    .HasColumnType("datetime");
+
+            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DeletedOn).HasColumnType("datetime");
         });
 
 
@@ -750,8 +756,6 @@ public partial class NextShotContext : DbContext
     entity.Property(e => e.PaymentStatus).HasMaxLength(50);
 });
 
-
-
         modelBuilder.Entity<InventorySale>(entity =>
         {
             entity.HasKey(e => e.InventorySaleId);
@@ -759,57 +763,50 @@ public partial class NextShotContext : DbContext
             entity.Property(e => e.ReceiptNo).HasMaxLength(50);
             entity.Property(e => e.CustomerName).HasMaxLength(150);
             entity.Property(e => e.PhoneNo).HasMaxLength(50);
-            entity.Property(e => e.ItemName).HasMaxLength(150);
+            entity.Property(e => e.PaymentStatus).HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
 
-            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.TotalAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 2)");
+
             entity.Property(e => e.NetAmount)
+                .HasColumnType("decimal(19, 2)")
                 .HasComputedColumnSql("([TotalAmount]-[DiscountAmount])", false)
-                .HasColumnType("decimal(18, 2)");
+                .ValueGeneratedOnAddOrUpdate();
 
             entity.Property(e => e.CashAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.CardAmount).HasColumnType("decimal(18, 2)");
+
             entity.Property(e => e.PaidAmount)
+                .HasColumnType("decimal(19, 2)")
                 .HasComputedColumnSql("([CashAmount]+[CardAmount])", false)
-                .HasColumnType("decimal(18, 2)");
+                .ValueGeneratedOnAddOrUpdate();
+
             entity.Property(e => e.DueAmount)
+                .HasColumnType("decimal(20, 2)")
                 .HasComputedColumnSql("(([TotalAmount]-[DiscountAmount])-([CashAmount]+[CardAmount]))", false)
-                .HasColumnType("decimal(18, 2)");
-
-            entity.Property(e => e.PaymentStatus).HasMaxLength(50);
-            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-            entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
-            entity.Property(e => e.DeletedOn).HasColumnType("datetime");
+                .ValueGeneratedOnAddOrUpdate();
         });
-
-
-
 
         modelBuilder.Entity<InventorySaleItem>(entity =>
         {
             entity.HasKey(e => e.InventorySaleItemId);
 
             entity.Property(e => e.ItemName).HasMaxLength(150);
-
             entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
 
             entity.Property(e => e.TotalAmount)
+                .HasColumnType("decimal(18, 2)")
                 .HasComputedColumnSql("([Price]*[Quantity])", false)
-                .HasColumnType("decimal(29, 2)");
+                .ValueGeneratedOnAddOrUpdate();
 
-            entity.Property(e => e.CreatedOn)
-                .HasColumnType("datetime")
-                .HasDefaultValueSql("(getdate())");
-
-            entity.HasOne(d => d.InventorySale)
-                .WithMany(p => p.InventorySaleItems)
-                .HasForeignKey(d => d.InventorySaleId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_InventorySaleItems_InventorySales");
+            entity.HasOne(e => e.InventorySale)
+                .WithMany(e => e.InventorySaleItems)
+                .HasForeignKey(e => e.InventorySaleId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
-
-
 
 
         modelBuilder.Entity<AssessmentOption>(entity =>
