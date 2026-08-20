@@ -42,6 +42,7 @@ public partial class CustomerPayment
 
     public int? InventorySaleId { get; set; }
     public string? ReceiptNo { get; set; }
-  
+    public DateTime? UpdatedOn { get; set; }
+    public DateTime? DeletedOn { get; set; }
 
 }

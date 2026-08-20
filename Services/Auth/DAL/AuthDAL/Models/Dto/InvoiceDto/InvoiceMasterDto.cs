@@ -327,9 +327,26 @@ namespace AuthDAL.Models.Dto.InvoiceDto
         public decimal GameRate { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal PaidAmount { get; set; }
-        public List<PlayerPaymentDto>? PlayerPayments { get; set; }
-    }
 
+        public decimal CashAmount { get; set; }
+        public decimal CardAmount { get; set; }
+        public List<EndTableSessionPlayerPaymentDto>? PlayerPayments { get; set; }
+     
+    }
+    public class EndTableSessionPlayerPaymentDto
+    {
+        public int? ClubCustomerId { get; set; }
+        public string? PlayerName { get; set; }
+        public int GameCount { get; set; }
+        public decimal TimeAmount { get; set; }
+        public decimal InventoryAmount { get; set; }
+        public decimal Amount { get; set; }
+        public decimal DiscountAmount { get; set; }
+        public decimal CashAmount { get; set; }
+        public decimal CardAmount { get; set; }
+        public decimal PaidAmount { get; set; }
+        public decimal DueAmount { get; set; }
+    }
     public class PayCustomerPendingAmountDto
     {
         public int ClubCustomerId { get; set; }
